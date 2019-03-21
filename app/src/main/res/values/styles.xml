@@ -17,4 +17,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CharacterItem" >
+        <item name="android:layout_gravity">center|bottom</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+
 </resources>
