@@ -2,6 +2,22 @@
     <string name="app_name">Onramp Android Take Home</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ironman_name">Iron Man</string>
+    <string name="ironman_description">Genius. Billionaire. Playboy. Philanthropist. Tony Stark\'s confidence is only matched by his high-flying abilities as the hero called Iron Man.</string>
+    <string name="ironman_imagePath">https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/ironman-spiderman-homecoming-poster-frontpage-700x354.jpg</string>
+    <string name="cap_name">Captain America</string>
+    <string name="cap_description">Recipient of the Super-Soldier serum, World War II hero Steve Rogers fights for American ideals as one of the world’s mightiest mHeroes and the leader of the Avengers.</string>
+    <string name="cap_imagePath">https://i.pinimg.com/736x/28/53/bb/2853bbd8f332840bbd71531df2c88499.jpg</string>
+    <string name="hulk_name">The Hulk</string>
+    <string name="hulk_imagePath">https://www.quirkybyte.com/wp-content/uploads/2018/05/hulk.png</string>
+    <string name="hulk_description">Dr. Bruce Banner lives a life caught between the soft-spoken scientist he’s always been and the uncontrollable green monster powered by his rage.</string>
+    <string name="blackWidow_name">Black Widow</string>
+    <string name="blackWidow_imagePath">https://static.comicvine.com/uploads/original/11118/111183611/5193180-tumblr_nyxu5mbe891sbqrlmo1_1280.jpg</string>
+    <string name="blackWidow_description">Despite super spy Natasha Romanoff’s checkered past, she’s become one of S.H.I.E.L.D.’s most deadly assassins and a frequent member of the Avengers.</string>
+    <string name="thor_imagePath">https://nerdist.com/wp-content/uploads/2017/10/2853187-comics_thor_marvel_comics_avengers_mjolnir_fresh_hd_wallpaper.jpg</string>
+    <string name="thor_name">Thor</string>
+    <string name="thor_description">The son of Odin uses his mighty abilities as the God of Thunder to protect his home Asgard and planet Earth alike.</string>
+    <string name="hawkeye_name">Hawkeye</string>
+    <string name="hawkeye_description">A master marksman and longtime friend of Black Widow, Clint Barton serves as the Avengers’ amazing archer.</string>
+    <string name="hawkeye_imagePath">https://i.pinimg.com/originals/dc/cc/41/dccc419a7c2812e8769ebcb479ed8225.jpg</string>
 </resources>
