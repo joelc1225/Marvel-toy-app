@@ -14,7 +14,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "ApiKey", Marvel_ApiKey
         }
+        debug {
+            buildConfigField 'String', "ApiKey", Marvel_ApiKey
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 }
 
@@ -44,6 +52,8 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     // Lottie for easy, clean animations
     implementation "com.airbnb.android:lottie:2.7.0"
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 }

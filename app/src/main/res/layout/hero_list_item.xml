@@ -17,14 +17,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            style="@style/CharacterItemImageView"
+            />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:textSize="35sp"
+            style="@style/CharacterItemTextView"
             tools:text="The Hulk"
             />
 
