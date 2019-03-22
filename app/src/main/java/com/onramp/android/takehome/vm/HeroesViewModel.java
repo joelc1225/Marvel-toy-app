@@ -6,15 +6,15 @@ import com.onramp.android.takehome.model.Hero;
 
 import java.util.List;
 
-public class HeroesVM extends ViewModel {
+public class HeroesViewModel extends ViewModel {
 
     private static List<Hero> mHeroes;
 
-    public static List<Hero> getHeroes() {
+    public List<Hero> getHeroes() {
         return mHeroes;
     }
 
-    public static void setHeroes(List<Hero> heroes) {
+    public void setHeroes(List<Hero> heroes) {
         mHeroes = heroes;
     }
 }
