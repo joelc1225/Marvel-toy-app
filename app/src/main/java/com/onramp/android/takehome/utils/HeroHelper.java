@@ -26,27 +26,33 @@ public class HeroHelper {
             heroesList = new ArrayList<>();
             heroesList.add(new Hero(context.getString(R.string.ironman_name),
                     context.getString(R.string.ironman_description),
-                    context.getString(R.string.ironman_imagePath)));
+                    context.getString(R.string.ironman_imagePath),
+                    context.getString(R.string.iron_man_url)));
 
             heroesList.add(new Hero(context.getString(R.string.cap_name),
                     context.getString(R.string.cap_description),
-                    context.getString(R.string.cap_imagePath)));
+                    context.getString(R.string.cap_imagePath),
+                    context.getString(R.string.cap_url)));
 
             heroesList.add(new Hero(context.getString(R.string.hulk_name),
                     context.getString(R.string.hulk_description),
-                    context.getString(R.string.hulk_imagePath)));
+                    context.getString(R.string.hulk_imagePath),
+                    context.getString(R.string.hulk_url)));
 
             heroesList.add(new Hero(context.getString(R.string.blackWidow_name),
                     context.getString(R.string.blackWidow_description),
-                    context.getString(R.string.blackWidow_imagePath)));
+                    context.getString(R.string.blackWidow_imagePath),
+                    context.getString(R.string.blackWidow_url)));
 
             heroesList.add(new Hero(context.getString(R.string.thor_name),
                     context.getString(R.string.thor_description),
-                    context.getString(R.string.thor_imagePath)));
+                    context.getString(R.string.thor_imagePath),
+                    context.getString(R.string.thor_url)));
 
             heroesList.add(new Hero(context.getString(R.string.hawkeye_name),
                     context.getString(R.string.hawkeye_description),
-                    context.getString(R.string.hawkeye_imagePath)));
+                    context.getString(R.string.hawkeye_imagePath),
+                    context.getString(R.string.hawkeye_url)));
         } else {
             Timber.d("List is NOT null. returning same list");
         }
