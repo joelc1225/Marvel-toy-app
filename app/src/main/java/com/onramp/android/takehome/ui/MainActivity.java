@@ -1,14 +1,22 @@
 package com.onramp.android.takehome.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.onramp.android.takehome.R;
+import com.onramp.android.takehome.utils.HeroHelper;
+import com.onramp.android.takehome.vm.HeroesViewModel;
 
 public class MainActivity extends AppCompatActivity {
+
+    HeroesViewModel heroesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        heroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel.class);
+        heroesViewModel.setHeroes(HeroHelper.getHeroes(this));
+        bindUi();
     }
 
     @Override
@@ -33,10 +45,22 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_events) {
+            Intent startEventsActivity = new Intent(this, EventsActivity.class);
+            startActivity(startEventsActivity);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void bindUi() {
+        RecyclerView recyclerView = findViewById(R.id.hero_RV);
+        MainRecyclerviewAdapter adapter =
+                new MainRecyclerviewAdapter(this, heroesViewModel.getHeroes());
+        recyclerView.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+
     }
 }
