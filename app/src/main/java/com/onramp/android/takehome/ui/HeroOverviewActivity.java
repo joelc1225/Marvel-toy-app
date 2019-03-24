@@ -16,7 +16,7 @@ import org.parceler.Parcels;
 
 import timber.log.Timber;
 
-public class CharacterOverviewActivity extends AppCompatActivity {
+public class HeroOverviewActivity extends AppCompatActivity {
 
     TextView nameTextView;
     TextView descriptionTextView;

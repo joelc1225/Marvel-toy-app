@@ -50,7 +50,7 @@ public class MainRecyclerviewAdapter extends RecyclerView.Adapter<MainRecyclervi
         viewHolder.nameTextview.setText(currentHero.name);
 
         viewHolder.constraintLayout.setOnClickListener(v -> {
-            Intent goToOverviewIntent = new Intent(mContext, CharacterOverviewActivity.class);
+            Intent goToOverviewIntent = new Intent(mContext, HeroOverviewActivity.class);
 
             goToOverviewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             Bundle bundle = new Bundle();
