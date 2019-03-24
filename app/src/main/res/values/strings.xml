@@ -20,4 +20,28 @@
     <string name="hawkeye_name">Hawkeye</string>
     <string name="hawkeye_description">A master marksman and longtime friend of Black Widow, Clint Barton serves as the Avengers’ amazing archer.</string>
     <string name="hawkeye_imagePath">https://i.pinimg.com/originals/dc/cc/41/dccc419a7c2812e8769ebcb479ed8225.jpg</string>
+    <string name="iron_man_url">https://www.marvel.com/characters/iron-man-tony-stark</string>
+    <string name="cap_url">https://www.marvel.com/characters/captain-america-steve-rogers</string>
+    <string name="hulk_url">https://www.marvel.com/characters/hulk-bruce-banner</string>
+    <string name="blackWidow_url">https://www.marvel.com/characters/black-widow-natasha-romanoff</string>
+    <string name="thor_url">https://www.marvel.com/characters/thor-thor-odinson</string>
+    <string name="hawkeye_url">https://www.marvel.com/characters/hawkeye-clint-barton</string>
+    <string name="comiccon_sanDiego_url">https://www.comic-con.org/frontpage</string>
+    <string name="comicon_ny_url">https://www.newyorkcomiccon.com</string>
+    <string name="more_hero_details">More hero details</string>
+    <string name="san_diego_comic_con">San Diego Comic Con</string>
+    <string name="event_details">Event Details</string>
+    <string name="new_york_comic_con">New York Comic Con</string>
+    <string name="events">Events</string>
+    <string name="san_diego_imageUrl">https://upload.wikimedia.org/wikipedia/en/thumb/9/97/San_Diego_Comic-Con_International_logo.svg/829px-San_Diego_Comic-Con_International_logo.svg.png</string>
+    <string name="ny_imageUrl">https://www.newyorkcomiccon.com/RNA/RNA_NewYorkComicCon_V2/_brand-guidelines/NYCC-Do-02.jpg?v=636579374296990468</string>
+    <string name="sd_event_date">July 18–21, 2019</string>
+    <string name="ny_event_date">October 3–6, 2019</string>
+    <string name="ny_event_location">Jacob K. Javits Convention Center</string>
+    <string name="sd_event_location">San Diego Convention Center</string>
+    <string name="learn_more">Learn more</string>
+    <string name="where">WHERE:</string>
+    <string name="when">WHEN:</string>
+
+
 </resources>
