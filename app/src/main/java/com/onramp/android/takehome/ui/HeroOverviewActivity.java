@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +17,8 @@ import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.data.HeroRepository;
 import com.onramp.android.takehome.model.Hero;
 import com.onramp.android.takehome.utils.InjectorUtils;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -27,6 +31,7 @@ public class HeroOverviewActivity extends AppCompatActivity {
     TextView descriptionTextView;
     ImageView heroImageView;
     Button detailsButton;
+    CoordinatorLayout coordinatorLayout;
     static LottieAnimationView lottieAnimationView;
     static boolean mIsFavorite;
     private static Context mContext;
@@ -41,6 +46,7 @@ public class HeroOverviewActivity extends AppCompatActivity {
         heroImageView = findViewById(R.id.hero_overview_imageview);
         detailsButton = findViewById(R.id.details_button);
         lottieAnimationView = findViewById(R.id.lottie_fave_star);
+        coordinatorLayout = findViewById(R.id.coordinator_hero_overview);
         mContext = this;
         mIsFavorite = false;
 
@@ -56,7 +62,11 @@ public class HeroOverviewActivity extends AppCompatActivity {
                     Timber.d("HERO NOT NULL frag");
                     nameTextView.setText(hero.name);
                     descriptionTextView.setText(hero.description);
-                    Picasso.get().load(hero.imagePath).into(heroImageView);
+                    Picasso.get().load(hero.imagePath)
+                            .placeholder(R.drawable.hero_image_placeholder)
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(heroImageView);
 
                     detailsButton.setOnClickListener(v -> {
                         Intent moreDetailsIntent = new Intent(Intent.ACTION_VIEW);
@@ -75,12 +85,18 @@ public class HeroOverviewActivity extends AppCompatActivity {
                             lottieAnimationView.playAnimation();
                             HeroRepository.insertFavoriteHero(hero, this);
                             mIsFavorite = true;
+
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Inserting to database", Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         } else {
                             Timber.d("DELETING FAVORITE");
                             lottieAnimationView.setSpeed(-2f);
                             lottieAnimationView.playAnimation();
                             HeroRepository.deleteFavoriteHero(hero, this);
                             mIsFavorite = false;
+
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Removing from database", Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         }
                     });
                 }
