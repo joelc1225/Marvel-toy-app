@@ -19,10 +19,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', "ApiKey", Marvel_ApiKey
         }
         debug {
-            buildConfigField 'String', "ApiKey", Marvel_ApiKey
         }
     }
     compileOptions {
