@@ -12,7 +12,9 @@ import android.view.MenuItem;
 
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.utils.HeroHelper;
+import com.onramp.android.takehome.utils.InjectorUtils;
 import com.onramp.android.takehome.vm.HeroesViewModel;
+import com.onramp.android.takehome.vm.HeroesViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        heroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel.class);
+        // Creates ViewModel
+        HeroesViewModelFactory factory = new HeroesViewModelFactory(InjectorUtils.provideRepository(this));
+        heroesViewModel = ViewModelProviders.of(this, factory).get(HeroesViewModel.class);
         heroesViewModel.setHeroes(HeroHelper.getHeroes(this));
         bindUi();
     }
