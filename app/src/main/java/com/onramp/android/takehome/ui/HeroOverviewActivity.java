@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -17,6 +19,7 @@ import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.data.HeroRepository;
 import com.onramp.android.takehome.model.Hero;
 import com.onramp.android.takehome.utils.InjectorUtils;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -27,10 +30,13 @@ import timber.log.Timber;
 
 public class HeroOverviewActivity extends AppCompatActivity {
 
+    // Tried to use databinding in this class, but kept getting an error with the Coordinator layout
+    // Will investigate in the future
     TextView nameTextView;
     TextView descriptionTextView;
     ImageView heroImageView;
     Button detailsButton;
+    ProgressBar progressBar;
     CoordinatorLayout coordinatorLayout;
     static LottieAnimationView lottieAnimationView;
     static boolean mIsFavorite;
@@ -45,10 +51,13 @@ public class HeroOverviewActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.hero_description_TV);
         heroImageView = findViewById(R.id.hero_overview_imageview);
         detailsButton = findViewById(R.id.details_button);
+        progressBar = findViewById(R.id.overview_activity_progressbar);
         lottieAnimationView = findViewById(R.id.lottie_fave_star);
         coordinatorLayout = findViewById(R.id.coordinator_hero_overview);
         mContext = this;
         mIsFavorite = false;
+
+        progressBar.setVisibility(View.VISIBLE);
 
 
         Bundle bundle = getIntent().getBundleExtra("bundle");
@@ -66,7 +75,19 @@ public class HeroOverviewActivity extends AppCompatActivity {
                             .placeholder(R.drawable.hero_image_placeholder)
                             .memoryPolicy(MemoryPolicy.NO_CACHE)
                             .networkPolicy(NetworkPolicy.NO_CACHE)
-                            .into(heroImageView);
+                            .into(heroImageView, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    Snackbar snackbar = Snackbar.make(coordinatorLayout, "No network to download image", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
+                                }
+                            });
 
                     detailsButton.setOnClickListener(v -> {
                         Intent moreDetailsIntent = new Intent(Intent.ACTION_VIEW);

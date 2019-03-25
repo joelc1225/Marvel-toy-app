@@ -4,6 +4,7 @@ package com.onramp.android.takehome.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.databinding.FragmentEventDetailBinding;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -37,7 +39,9 @@ public class EventFragment extends Fragment {
 
         FragmentEventDetailBinding binding = FragmentEventDetailBinding.inflate(inflater, container, false);
         View view =  binding.getRoot();
+
         Bundle bundle = getArguments();
+        binding.eventFragDetailProgressbar.setVisibility(View.VISIBLE);
 
         // Inflates views depending on what event was clicked in the EventsActivity
         if (bundle != null) {
@@ -50,7 +54,20 @@ public class EventFragment extends Fragment {
                             .placeholder(R.drawable.hero_image_placeholder)
                             .memoryPolicy(MemoryPolicy.NO_CACHE)
                             .networkPolicy(NetworkPolicy.NO_CACHE)
-                            .into(binding.fragEventImage);
+                            .into(binding.fragEventImage, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    binding.eventFragDetailProgressbar.setVisibility(View.INVISIBLE);
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    binding.eventFragDetailProgressbar.setVisibility(View.INVISIBLE);
+                                    Snackbar snackbar =
+                                            Snackbar.make(binding.eventDetailCoordinator, "No network available to download image", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
+                                }
+                            });
                     binding.fragEventDate.setText(getString(R.string.sd_event_date));
                     binding.fragEventLocationTV.setText(getString(R.string.sd_event_location));
                     binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {

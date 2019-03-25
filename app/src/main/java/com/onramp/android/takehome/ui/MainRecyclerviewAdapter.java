@@ -5,15 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.model.Hero;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -47,11 +51,26 @@ public class MainRecyclerviewAdapter extends RecyclerView.Adapter<MainRecyclervi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final Hero currentHero = mHeroesList.get(i);
 
+        viewHolder.progressBar.setVisibility(View.VISIBLE);
+
         Picasso.get().load(currentHero.imagePath)
                 .placeholder(R.drawable.hero_image_placeholder).fit()
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
-                .centerCrop().fit().into(viewHolder.imageView);
+                .centerCrop().fit().into(viewHolder.imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                viewHolder.progressBar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                viewHolder.progressBar.setVisibility(View.INVISIBLE);
+                Snackbar snackbar =
+                        Snackbar.make(viewHolder.coordinatorLayout, "No network available to download image", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
         Timber.d("image path is: %s", currentHero.imagePath);
         viewHolder.nameTextview.setText(currentHero.name);
 
@@ -75,12 +94,16 @@ public class MainRecyclerviewAdapter extends RecyclerView.Adapter<MainRecyclervi
         TextView nameTextview;
         ImageView imageView;
         ConstraintLayout constraintLayout;
+        ProgressBar progressBar;
+        CoordinatorLayout coordinatorLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextview = itemView.findViewById(R.id.item_textView);
             imageView = itemView.findViewById(R.id.item_imageView);
             constraintLayout = itemView.findViewById(R.id.item_constraint_layout);
+            progressBar = itemView.findViewById(R.id.listitem_progressBar);
+            coordinatorLayout = itemView.findViewById(R.id.list_item_coordinator);
         }
     }
 }
