@@ -2,7 +2,6 @@ package com.onramp.android.takehome.ui;
 
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,7 +33,7 @@ public class EventFragment extends Fragment {
 
         Timber.d("FRAG ONCREATEVIEW starting ****");
 
-        FragmentEventDetailBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_detail, container, false);
+        FragmentEventDetailBinding binding = FragmentEventDetailBinding.inflate(inflater, container, false);
         View view =  binding.getRoot();
         Bundle bundle = getArguments();
 
