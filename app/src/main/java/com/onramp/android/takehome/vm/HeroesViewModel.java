@@ -17,6 +17,7 @@ public class HeroesViewModel extends ViewModel {
         mFavoriteHeroes = heroRepository.getAllHeroes();
     }
 
+    // Will be used to develop in the future to show the favorites in the database
     public static LiveData<List<Hero>> getFavoriteHeroes() {
         return mFavoriteHeroes;
     }

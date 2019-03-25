@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.model.Hero;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -45,7 +47,11 @@ public class MainRecyclerviewAdapter extends RecyclerView.Adapter<MainRecyclervi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final Hero currentHero = mHeroesList.get(i);
 
-        Picasso.get().load(currentHero.imagePath).centerCrop().fit().into(viewHolder.imageView);
+        Picasso.get().load(currentHero.imagePath)
+                .placeholder(R.drawable.hero_image_placeholder).fit()
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .centerCrop().fit().into(viewHolder.imageView);
         Timber.d("image path is: %s", currentHero.imagePath);
         viewHolder.nameTextview.setText(currentHero.name);
 

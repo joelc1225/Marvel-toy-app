@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.databinding.FragmentEventDetailBinding;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -44,7 +46,11 @@ public class EventFragment extends Fragment {
                 case "sd":
                     Timber.d("FOUND SD KEY");
                     binding.fragEventName.setText(getString(R.string.san_diego_comic_con));
-                    Picasso.get().load(getString(R.string.san_diego_imageUrl)).into(binding.fragEventImage);
+                    Picasso.get().load(getString(R.string.san_diego_imageUrl))
+                            .placeholder(R.drawable.hero_image_placeholder)
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(binding.fragEventImage);
                     binding.fragEventDate.setText(getString(R.string.sd_event_date));
                     binding.fragEventLocationTV.setText(getString(R.string.sd_event_location));
                     binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +66,11 @@ public class EventFragment extends Fragment {
                     Timber.d("FOUND NY KEY");
 
                     binding.fragEventName.setText(this.getString(R.string.new_york_comic_con));
-                    Picasso.get().load(this.getString(R.string.ny_imageUrl)).into(binding.fragEventImage);
+                    Picasso.get().load(this.getString(R.string.ny_imageUrl))
+                            .placeholder(R.drawable.hero_image_placeholder)
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(binding.fragEventImage);
                     binding.fragEventDate.setText(this.getString(R.string.ny_event_date));
                     binding.fragEventLocationTV.setText(this.getString(R.string.ny_event_location));
                     binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {

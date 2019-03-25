@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.onramp.android.takehome.R;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import timber.log.Timber;
@@ -31,8 +33,16 @@ public class EventsActivity extends AppCompatActivity {
         sd_button = findViewById(R.id.sd_event_button);
         ny_button = findViewById(R.id.ny_event_button);
 
-        Picasso.get().load(this.getString(R.string.san_diego_imageUrl)).into(sd_imageView);
-        Picasso.get().load(this.getString(R.string.ny_imageUrl)).into(ny_imageView);
+        Picasso.get().load(this.getString(R.string.san_diego_imageUrl))
+                .placeholder(R.drawable.hero_image_placeholder)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(sd_imageView);
+        Picasso.get().load(this.getString(R.string.ny_imageUrl))
+                .placeholder(R.drawable.hero_image_placeholder)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(ny_imageView);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
