@@ -42,7 +42,7 @@ public class HeroRepository {
         return mHeroDao.getAllHeroes();
     }
 
-    // Inserts new favorite episode to Room database
+    // Inserts new favorite Hero to Room database
     public static void insertFavoriteHero(Hero hero, Context context) {
         Timber.d("STARTING INSERT METHOD REPO");
 
@@ -56,7 +56,7 @@ public class HeroRepository {
         context.startService(serviceIntent);
     }
 
-    // Deletes episode from favorites database
+    // Deletes Hero from favorites database
     public static void deleteFavoriteHero(Hero hero, Context context) {
         Timber.d("STARTING DELETE METHOD REPO");
 
@@ -65,7 +65,7 @@ public class HeroRepository {
         bundle.putString("actionKey", "delete");
 
         Intent serviceIntent = new Intent(context, DatabaseService.class);
-        serviceIntent.putExtra("bundle", bundle);
+        serviceIntent.putExtras(bundle);
 
         context.startService(serviceIntent);
     }

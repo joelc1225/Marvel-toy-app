@@ -98,7 +98,7 @@ public class HeroOverviewActivity extends AppCompatActivity {
                     //Check if hero is already in the database. If so, adjust lottie animation to be colored in
                     new querySingleHeroAsyncTask().execute(hero.name);
 
-                    // Clicking the Bookmark imageAnimation will Insert and Remove the Episode from the ROOM database
+                    // Clicking the imageAnimation will Insert and Remove the Hero from the ROOM database
                     lottieAnimationView.setOnClickListener(v -> {
                         if (!mIsFavorite) {
                             Timber.d("INSERTING FAVORITE");
