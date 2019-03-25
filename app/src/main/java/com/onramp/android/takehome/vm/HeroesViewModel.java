@@ -1,7 +1,9 @@
 package com.onramp.android.takehome.vm;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.onramp.android.takehome.data.HeroRepository;
 import com.onramp.android.takehome.model.Hero;
 
 import java.util.List;
@@ -9,6 +11,15 @@ import java.util.List;
 public class HeroesViewModel extends ViewModel {
 
     private static List<Hero> mHeroes;
+    private static LiveData<List<Hero>> mFavoriteHeroes;
+
+    HeroesViewModel(HeroRepository heroRepository) {
+        mFavoriteHeroes = heroRepository.getAllHeroes();
+    }
+
+    public static LiveData<List<Hero>> getFavoriteHeroes() {
+        return mFavoriteHeroes;
+    }
 
     public List<Hero> getHeroes() {
         return mHeroes;
