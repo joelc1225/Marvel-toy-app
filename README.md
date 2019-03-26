@@ -1,34 +1,25 @@
 ![alt_text](https://s2-cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/173/100/resized/Onramp_final_logo_for_twitter___instagram.jpg?1548972880 "image_tooltip")
 
-# Onramp Android Take Home Project 
+# Marvel Toy App 
 
 ## Overview 🤖
 
-Congratulations for making it this far in the interview process for the Pandora Demo Tape Apprenticeship at Onramp. This project seeks to better inform the Onramp team of your experience with Java programming and Android development as well as prepare you for your interview at Pandora. 
+In honor of the last Avengers movie which is coming out soon, I decided to make a small app involving the first Avengers introduced to us in the Marvel Cinimatic Universe 10 years ago. It's a relatively simple app, but it was fun to make and I'll most likely keep adding to this project and use it as a sandbox to try new things.
 
-You will have seven days to complete it. We expect those who have a moderate level of Android and Java development experience to spend between 24 and 32 hours to design, implement, document, and submit the project to us. Depending on your level, it may take more or less time, so please plan accordingly.
+## Built with:
+
+- Picasso - Handles image loading and caching
+- Parceler - Made working with parcelable objects easier
+- Timber - For simple logging convenience
+- Lottie - Used for 'favorite' animation
+- MVVM architecture 
+- Material Design components
+- Repository pattern for further abstraction and seperation of concerns 
+- ROOM - Abstraction layer over SQLite
+- Databinding - Basic usage to minimize 'findviewbyid' calls
 
 ## Description and Details 🔎
 
-#### Researching and Plagiarism
-
-You are actively encouraged to research the web, books, videos, or tutorials for this project. That said, we expect all code that is submitted to be your own (e.g. this project should **NOT** be completed with another person). That means that we expect each candidate to refrain from copying and/or pasting code into the project. If we find copied code in your project, we will have to disqualify you.. 
-
-#### Android App Requirements
-
-The Onramp team wants you to build an Android application which is related to something you are passionate about. This will enable us and the Pandora interviewers to learn more about you. Please scope your features to what you can reasonably accomplish within the designated timeframe. Scoping the functionality accurately is important to ensure you have a completed application by the submission deadline. Though the type of application you build and it's feature-set is defined by you, there are architectural requirements which each Android application should meet. They include:
-
-*   The usage of a minimum of at least three [Activities](https://developer.android.com/guide/components/activities). 
-*   The usage of a minimum of at-least one [Service](https://developer.android.com/guide/components/services).
-*   The usage of the [MVVM](https://medium.com/@husayn.hakeem/android-by-example-mvvm-data-binding-introduction-part-1-6a7a5f388bf7) architectural pattern.
-*   The usage of a minimum of at least five UI components from the [Android Material Design Component Library](https://material.io/design/components/bottom-navigation.html).
-*   The usage of a minimum one [Fragment](https://developer.android.com/guide/components/fragments).
-
-**Note you will need to detail where and how your Android App meets these requirements in your repository's  README file when you submit your project.**
-
-## What we're looking for 🌟
-
-We will evaluate your project by assessing the overall strength and quality of the following five factors: 
 
 #### UI Design
 
