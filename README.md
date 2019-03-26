@@ -18,59 +18,140 @@ In honor of the last Avengers movie which is coming out soon, I decided to make 
 - ROOM - Abstraction layer over SQLite
 - Databinding - Basic usage to minimize 'findviewbyid' calls
 
-## Description and Details 🔎
+## Description and Details of each screen below 🔎
+
+There will be descriptions of each app screen below every screen shot
 
 
-#### UI Design
-
-Android users expect your application to look and behave in a way that's consistently intuitive. Your Android application should utilize thoughtful [animations](https://material.io/design/motion/), [patterns](https://material.io/design/), [style](https://material.io/design/color/), [components](https://material.io/design/components/) and [layouts](https://material.io/design/layout/understanding-layout.html) to create a highly usable user interface.
-
-#### Architecture Pattern
-
-An architecture pattern enables you to define a guide for how a piece of software should function, such that it can be scalable, maintainable, and testable. Common patterns for Android applications include [MVC](https://medium.com/upday-devs/android-architecture-patterns-part-1-model-view-controller-3baecef5f2b6) (Model View Controller), [MVP](https://android.jlelse.eu/architectural-guidelines-to-follow-for-mvp-pattern-in-android-2374848a0157) (Model View Presenter) and [MVVM](https://medium.com/@husayn.hakeem/android-by-example-mvvm-data-binding-introduction-part-1-6a7a5f388bf7) (Model View ViewModel). **Note that it is required that you leverage the MVVM pattern within your Android app.**
 
 
-#### Core Android Components
 
-[Activities](https://developer.android.com/guide/components/activities), [Services](https://developer.android.com/guide/components/services), [Broadcast Receivers](https://developer.android.com/reference/android/content/BroadcastReceiver.html), and [Content Providers](https://developer.android.com/guide/topics/providers/content-providers.html) are four types of Android Application components, which are the essential building blocks of an Android app. Each serves a distinct purpose and has a distinct lifecycle that defines how the component is created and destroyed. 
 
-The usage of Activities and Services are extremely common when implementing Android apps and are therefore **mandatory** to include in your project, however, the usage of a Broadcast Receiver and/or Content Provider is optional, depending on the app design.
 
-#### Android Development Best Practices
 
-It's important to subscribe to a set of best practices when designing and implementing an Android app. Be mindful of these widely accepted principles:
 
-*   [DRY](https://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161) (don't repeat yourself)
-*   Maintain a [separation of concerns](https://developer.android.com/jetpack/docs/guide#separation-of-concerns) within your Android components
-*   Specify good [project structure](https://developer.android.com/studio/intro)
+### Activity #1
 
-Using these principles will result in a high quality user experience while efficiently utilizing phone hardware resources and ensuring other developers can easily navigate through your code.
+![](main_screenshot.png)
 
-#### Android Application Description
 
-As detailed above, each project submission must include a README file, which provides an overview of the Android application and details the app's overall MVVM architecture as well as your design decisions.. Screenshots of the Android app taken from the Android Studio emulator are also required. This task assesses the critical competency of communicating and documenting technical concepts.
 
-**Note: Testing frameworks and strategies are intentionally NOT included within the rubric because we want you to dedicate your time to building a functional application (We do realize that UI and Android component testing are critical practices of Android Development, but this take home project prioritizes a focus on surfacing Java/Android development proficiency).**
 
-## Submission Information 🚀
 
-#### Submission Format
 
-This repository will be your starting point. Please clone (not fork) this Github repository ([onramp-android-take-home](https://github.com/onramp-io/onramp-android-take-home)) and commit to your master branch for the project. Once the Android application has been completed, you'll be submitting a link to the repository. Prior to submitting your project, you should update the README file to provide the following information:
+The above screenshot is the entry point of the app. 
 
-*   A high level architectural overview of your Android application. e.g. names, relationships and purposes of all components, including Activities, Services, Content Providers, Broadcast Receivers, etc. 
-*   A brief description of any design patterns that you leveraged.
-*   [Screenshots](https://developer.android.com/studio/debug/am-screenshot) of each Activity View and descriptions of the overall user flow.
+- I adjusted the colors in colors.xml so coincide with Marvel's color scheme. I chose to use a dark grey as the background, because I felt it had good contrast between the views and app bar. 
 
-#### Submission Deadline + Process
+- I created a shape file named 'scrim.xml' so I can place the the scrim over the imageViews in the app and improve the readability of the white text over the images.
 
-You must submit your project at **11:59pm PST, the night before your interview**. Your project will be considered complete when you email [submissions@onramp.io](mailto:engineering@onramp.io) with a link to your repository. 
+- The data used in the activity is being retrieved from the ViewModel, while the ViewModel is retrieving the data from a helper class that constructs the Hero objects from data stores in strings.xml. That way, I wouldn't have to build each Hero data model in any UI related classes.
 
-## Additional Resources 📚
+- Picasso is loading the images inside the RecyclerviewAdaper class. I'm using a placeholder image in case there's no network. (Placeholder image will be posted below)
 
-*   [Android Studio](https://developer.android.com/studio)
-*   [Android Application Fundamentals](https://developer.android.com/guide/components/fundamentals)
-*   [Design for Android Developers](https://developer.android.com/design)
-*   [Android Material Design Component Library](https://material.io/design/components/bottom-navigation.html)
-*   [Basic concepts of software architecture patterns in Android](https://android.jlelse.eu/basic-concepts-of-software-architecture-patterns-in-android-c76e53f46cba)
-*   [Wake up to Pandora with the Clock app from Google](https://engineering.pandora.com/wake-up-to-pandora-with-the-clock-app-from-google-7859fe7743aa) (Pandora Engineering Blog post)
+-  This activity implements a collapsing toolbar (shown below)
+
+![](hero_activity_main.gif)
+
+- All imageViews in this activity (and all app screens) have progressBars shown until the image is fully loaded with Picasso
+
+
+
+
+
+### Activity #2
+
+![](hero_overview_screenshot.png)
+
+
+
+
+
+The above screenshot is the destination screen once the user clicks on an item from the recyclerView in the MainActivity.
+
+- The star image is a LottieAnimationView(LAV). I use it as a simple animation button that indicates that the Hero is placed in the ROOM database or not. Once the LAV is clicked, the current Hero data is sent to the HeroRepository class, which then uses a Service to complete the database event on a background thread, so we don't block the UI thread.
+
+- Also, when the LAV is clicked, a snackbar pops up to let the user know that they added or removed the hero to the database. (gif below to show both the Lottie animation and snackbar in action)
+
+
+
+![](hero_database_anim_snackbar.gif)
+
+
+
+
+
+- I use a Material Design button as the "More Hero Details" button. When clicked it creates a simple ACTIONVIEW intent that sends the user to the Hero's profile on Marvel.com. The style for this button is defined in styles.xml and reused for all buttons in the app. (gif below shows actionView event. Takes a while to load browser because of my slow wifi lol)
+
+
+![](action_view.gif)
+
+
+- When this activity first launches, I query the ROOM database to see if the currently selected hero exists in the database. If it does, I'll fill in the Lottie animation view to signify that to the user and I'll also set a flag in the activity that it's already in the database and if the user clicks to REMOVE the Hero, the correct action is performed. (via onClickListeners on the LottieAnimationView)
+
+
+
+### Activity #3
+
+![](events_overview_screenshot.png)
+
+
+
+
+The above screenshot is the destination the user is brought to if they click on the overflow menu item 'Events'. It's a very  simple activity. I could have done more here, but I honestly needed a reason to use a Fragment. Therefore, those buttons underneath each event image opens a fragment with the event details. Nothing fancy here. Again, all the data for the app is in memory besides the image urls, so I'm just passing along the data via Bundles and Intents.
+
+
+
+### Fragment (one and only)
+
+![](events_detailFrag_screenshot.png)
+
+
+The above screenshot is another simple screen. The fragment receives the data passed in from bundle arguments and inflates the data for the event based on which event was clicked in the previous screen. The button below sends the sends the user to that specific events website so they can learn more about the event. (gif below shows entire 'Event' flow)
+
+
+![](events_flow_progressbar_placeholder.gif)
+
+
+
+
+
+
+
+### Placeholder image when there's no network
+
+sad deadpool =(
+
+
+
+![](sad_deadpool_placeholder.png)
+
+
+
+
+
+### 5 Material Design Components
+
+I explained some of these in the above descriptions so I'll list them off here again and where they are located.
+
+- AppBar with Collapsing toolbar in MainActivity
+- Progressbar is in every imageview to indicate that content is loading. Once Picasso loads image, I set it to INVISIBILE via a callback inside Picasso
+- Material Design Button is used throughout the app and styled consistently with styles.xml
+- Material Design Cards are used for the RecyclerView in MainActivity
+- Snackbars are used to inform the user of database events in the HeroOverviewActivity
+
+
+### Service 
+
+I used a simple Service to do the database transactions in a background thread. With the startActivity intent, I pass in a bundle that has 2 parameters. One is the Hero to be inserted\removed and the second is a String key that designates whether it's a 'Insert' or 'Delete" action. Once the Service receives that data, it calls the HeroRepository, which then accessing the ROOM DOA and completes the database transaction
+
+
+# What I messed up
+
+- Landscape is a little messy (really messy actually), so I would definitely need to fix that through adjusting my Contraint layouts or defining landscape specific layouts.
+
+- I'm using MVVM to allow for more abstraction and seperation of concerns, but I realized that after initializing the data when the app launches, I pass around all the data through Intents and bundles. Therefore the data in my other screens are saved from device rotation. In hindsight, I probably would have created a ViewModel for each screen.
+
+- I made a "InjectorUtils" class that creates a single instance of the HeroRepository. I probably should've utilized this seperation of concerns more to improve app scalability and ease of testing components in isolation. I'm learning Dagger 2, so hopefully that will help out in that area. 
+
+- I use an Async task in the HeroOverviewActivity to check the database is the current entry exists. I know Asyncs are outdates and I'm looking to add RXjava to my coding toolkit soon so I can avoid Asyncs in the future.
