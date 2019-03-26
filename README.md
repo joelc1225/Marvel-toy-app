@@ -4,7 +4,7 @@
 
 ## Overview 🤖
 
-In honor of the last Avengers movie which is coming out soon, I decided to make a small app involving the first Avengers introduced to us in the Marvel Cinimatic Universe 10 years ago. It's a relatively simple app, but it was fun to make and I'll most likely keep adding to this project and use it as a sandbox to try new things.
+In honor of the last Avengers movie, which is coming out soon, I decided to make a small app involving the first Avengers that were introduced to us in the Marvel Cinimatic Universe 10 years ago. It's a relatively simple app, but it was fun to make and I'll most likely keep adding to this project and use it as a sandbox to try new things.
 
 ## Built with:
 
@@ -143,7 +143,7 @@ I explained some of these in the above descriptions so I'll list them off here a
 
 ### Service 
 
-I used a simple Service to do the database transactions in a background thread. With the startActivity intent, I pass in a bundle that has 2 parameters. One is the Hero to be inserted\removed and the second is a String key that designates whether it's a 'Insert' or 'Delete" action. Once the Service receives that data, it calls the HeroRepository, which then accessing the ROOM DOA and completes the database transaction
+I used a simple Service to do the database transactions in a background thread. With the startActivity intent, I pass in a bundle that has 2 parameters. One is the Hero to be inserted\removed and the second is a String key that designates whether it's a 'Insert' or 'Delete" action. Once the Service receives that data, it calls the HeroRepository, which then accesses the ROOM DOA and completes the database transaction
 
 
 # What I messed up =(
