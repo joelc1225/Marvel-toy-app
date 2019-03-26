@@ -87,7 +87,20 @@ public class EventFragment extends Fragment {
                             .placeholder(R.drawable.hero_image_placeholder)
                             .memoryPolicy(MemoryPolicy.NO_CACHE)
                             .networkPolicy(NetworkPolicy.NO_CACHE)
-                            .into(binding.fragEventImage);
+                            .into(binding.fragEventImage, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    binding.eventFragDetailProgressbar.setVisibility(View.INVISIBLE);
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    binding.eventFragDetailProgressbar.setVisibility(View.INVISIBLE);
+                                    Snackbar snackbar =
+                                            Snackbar.make(binding.eventDetailCoordinator, "No network available to download image", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
+                                }
+                            });
                     binding.fragEventDate.setText(this.getString(R.string.ny_event_date));
                     binding.fragEventLocationTV.setText(this.getString(R.string.ny_event_location));
                     binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {
