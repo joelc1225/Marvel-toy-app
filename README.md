@@ -154,16 +154,16 @@ I used a simple Service to do the database transactions in a background thread. 
 
 
 
-Here are a few things that I realized I could've done better or things I knew I should have done, but I didn't because I needed to submit this project on time. 'Maybe' if I hadn't wasted the first two days trying to get RetroFit to work with Marvel's API, I could have polished this up a little more. That's my bad for overcomplicating things and trying to be cool. Anyway, lesson learned. Here are some other things I messed up. Enjoy.
+Here are a few things that I realized I could've done better or things I knew I should have done, but I didn't because I needed to submit this project on time before an interview. 'Maybe' if I hadn't wasted the first two days trying to get RetroFit to work with Marvel's API, I could have polished this up a little more. That's my bad for overcomplicating things and trying to be cool. Anyway, lesson learned. Here are some other things I messed up. Enjoy.
 
 
-- Landscape is a little messy (really messy actually), so I would definitely need to fix that through adjusting my Contraint layouts or defining landscape specific layouts.
+- Landscape is a little messy (really messy actually), so I would definitely need to fix that through adjusting my Constraint layouts and defining landscape specific layouts.
 
-- I'm using MVVM to allow for more abstraction and seperation of concerns, but I realized that after initializing the data when the app launches, I pass around all the data through Intents and bundles. Therefore the data in my other screens are saved from device rotation. In hindsight, I probably would have created a ViewModel for each screen.
+- I'm using MVVM to allow for more abstraction and seperation of concerns, but I realized that after initializing the data when the app launches, I pass around all the data through Intents and bundles. Therefore the data in my other screens are NOT  saved from device rotation. In hindsight, I probably would have created a ViewModel for each screen.
 
 - I made a "InjectorUtils" class that creates a single instance of the HeroRepository. I probably should've utilized this seperation of concerns more to improve app scalability and ease of testing components in isolation. I'm learning Dagger 2, so hopefully that will help out in that area. 
 
-- I use an Async task in the HeroOverviewActivity to check the database is the current entry exists. I know Asyncs are outdates and I'm looking to add RXjava to my coding toolkit soon so I can avoid Asyncs in the future.
+- I use an Async task in the HeroOverviewActivity to check the database if the current entry exists. I know Asyncs are outdated and I'm looking to add RXjava to my coding toolkit soon so I can avoid Asyncs in the future.
 
 - There are definitely more strings that I should have placed in string.xml folder
 
