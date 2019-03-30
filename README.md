@@ -27,7 +27,7 @@ There will be descriptions of each app screen below every screen shot
 
 ### Activity #1
 
-<img src="main_screenshot.png" alt="drawing" width="400"/>
+<img src="main_screenshot.png" alt="drawing" width="350"/>
 
 
 The above screenshot is the entry point of the app. 
@@ -42,7 +42,7 @@ The above screenshot is the entry point of the app.
 
 -  This activity implements a collapsing toolbar (shown below)
 
-<img src="hero_activity_main.gif" alt="drawing" width="400"/>
+<img src="hero_activity_main.gif" alt="drawing" width="350"/>
 
 
 - All imageViews in this activity (and all app screens) have progressBars shown until the image is fully loaded with Picasso
@@ -51,7 +51,7 @@ The above screenshot is the entry point of the app.
 
 ### Activity #2
 
-<img src="hero_overview_screenshot.png" alt="drawing" width="400"/>
+<img src="hero_overview_screenshot.png" alt="drawing" width="350"/>
 
 
 The above screenshot is the destination screen once the user clicks on an item from the recyclerView in the MainActivity.
@@ -61,13 +61,13 @@ The above screenshot is the destination screen once the user clicks on an item f
 - Also, when the LAV is clicked, a snackbar pops up to let the user know that they added or removed the hero to the database. (gif below to show both the Lottie animation and snackbar in action)
 
 
-<img src="hero_database_anim_snackbar.gif" alt="drawing" width="400"/>
+<img src="hero_database_anim_snackbar.gif" alt="drawing" width="350"/>
 
 
 - I use a Material Design button as the "More Hero Details" button. When clicked it creates a simple ACTIONVIEW intent that sends the user to the Hero's profile on Marvel.com. The style for this button is defined in styles.xml and reused for all buttons in the app. (gif below shows actionView event. Takes a while to load browser because of my slow wifi lol)
 
 
-<img src="action_view.gif" alt="drawing" width="400"/>
+<img src="action_view.gif" alt="drawing" width="350"/>
 
 
 - When this activity first launches, I query the ROOM database to see if the currently selected hero exists in the database. If it does, I'll fill in the Lottie animation view to signify that to the user and I'll also set a flag in the activity that it's already in the database and if the user clicks to REMOVE the Hero, the correct action is performed. (via onClickListeners on the LottieAnimationView)
@@ -76,7 +76,7 @@ The above screenshot is the destination screen once the user clicks on an item f
 
 ### Activity #3
 
-<img src="events_overview_screenshot.png" alt="drawing" width="400"/>
+<img src="events_overview_screenshot.png" alt="drawing" width="350"/>
 
 
 The above screenshot is the destination the user is brought to if they click on the overflow menu item 'Events'. It's a very  simple activity. I could have done more here, but I honestly needed a reason to use a Fragment. Therefore, those buttons underneath each event image opens a fragment with the event details. Nothing fancy here. Again, all the data for the app is in memory besides the image urls, so I'm just passing along the data via Bundles and Intents.
@@ -85,21 +85,21 @@ The above screenshot is the destination the user is brought to if they click on 
 
 ### Fragment (one and only)
 
-<img src="events_detailFrag_screenshot.png" alt="drawing" width="400"/>
+<img src="events_detailFrag_screenshot.png" alt="drawing" width="350"/>
 
 
 The above screenshot is another simple screen. The fragment receives the data passed in from bundle arguments and inflates the data for the event based on which event was clicked in the previous screen. The button below sends the sends the user to that specific events website so they can learn more about the event. (gif below shows entire 'Event' flow)
 
 
-<img src="events_flow_progressbar_placeholder.gif" alt="drawing" width="400"/>
+<img src="events_flow_progressbar_placeholder.gif" alt="drawing" width="350"/>
 
 
 
 ### Placeholder image when there's no network
 
-Having no internet makes deadpool sad =(
+Having no internet makes Deadpool sad =(
 
-<img src="sad_deadpool_placeholder.png" alt="drawing" width="400"/>
+<img src="sad_deadpool_placeholder.png" alt="drawing" width="350"/>
 
 
 
@@ -122,7 +122,7 @@ I used a simple Service to do the database transactions in a background thread. 
 # What I messed up =(
 
 
-<img src="https://media.giphy.com/media/yvBAuESRTsETqNFlEl/giphy.gif" alt="drawing" width="400"/>
+<img src="https://media.giphy.com/media/yvBAuESRTsETqNFlEl/giphy.gif" alt="drawing" width="350"/>
 
 
 Here are a few things that I realized I could've done better or things I knew I should have done, but I didn't because I needed to submit this project on time before an interview. 'Maybe' if I hadn't wasted the first two days trying to get RetroFit to work with Marvel's API, I could have polished this up a little more. That's my bad for overcomplicating things and trying to be cool. Anyway, lesson learned. Here are some other things I messed up. Enjoy.
