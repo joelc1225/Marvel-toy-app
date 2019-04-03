@@ -130,7 +130,7 @@ Here are a few things that I realized I could've done better or things I knew I 
 
 - Landscape is a little messy (really messy actually), so I would definitely need to fix that through adjusting my Constraint layouts and defining landscape specific layouts.
 
-- I'm using MVVM to allow for more abstraction and seperation of concerns, but I realized that after initializing the data when the app launches, I pass around all the data through Intents and bundles. Therefore the data in my other screens are NOT  saved from device rotation. In hindsight, I probably would have created a ViewModel for each screen.
+- I'm using MVVM to allow for more abstraction and seperation of concerns, but I realized that after initializing the data when the app launches, I pass around all the data through Intents and bundles. Therefore, the data in my other screens is NOT properly saved from device rotation. In hindsight, I probably would have created a ViewModel for each screen.
 
 - I made a "InjectorUtils" class that creates a single instance of the HeroRepository. I probably should've utilized this seperation of concerns more to improve app scalability and ease of testing components in isolation. I'm learning Dagger 2, so hopefully that will help out in that area. 
 
