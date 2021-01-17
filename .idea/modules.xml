@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/onramp-android-project-take-home.iml" filepath="$PROJECT_DIR$/onramp-android-project-take-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Marvel-toy-app.iml" filepath="$PROJECT_DIR$/.idea/modules/Marvel-toy-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Marvel-toy-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Marvel-toy-app.app.iml" />
     </modules>
   </component>
 </project>

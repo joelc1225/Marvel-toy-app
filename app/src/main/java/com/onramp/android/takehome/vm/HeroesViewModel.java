@@ -1,7 +1,7 @@
 package com.onramp.android.takehome.vm;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.onramp.android.takehome.data.HeroRepository;
 import com.onramp.android.takehome.model.Hero;

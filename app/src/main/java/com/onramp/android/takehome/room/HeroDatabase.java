@@ -1,14 +1,14 @@
 package com.onramp.android.takehome.room;
 
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 import android.content.Context;
 
 import com.onramp.android.takehome.model.Hero;
 
 import timber.log.Timber;
 
-@android.arch.persistence.room.Database(entities = {Hero.class}, version = 1, exportSchema = false)
+@androidx.room.Database(entities = {Hero.class}, version = 1, exportSchema = false)
 public abstract class HeroDatabase extends RoomDatabase {
 
     public abstract HeroDao heroDao();

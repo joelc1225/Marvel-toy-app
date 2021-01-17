@@ -4,12 +4,12 @@ package com.onramp.android.takehome.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.onramp.android.takehome.R;
 import com.onramp.android.takehome.databinding.FragmentEventDetailBinding;
 import com.squareup.picasso.Callback;
@@ -70,13 +70,10 @@ public class EventFragment extends Fragment {
                             });
                     binding.fragEventDate.setText(getString(R.string.sd_event_date));
                     binding.fragEventLocationTV.setText(getString(R.string.sd_event_location));
-                    binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent eventDetailsIntent = new Intent(Intent.ACTION_VIEW);
-                            eventDetailsIntent.setData(Uri.parse(getString(R.string.comiccon_sanDiego_url)));
-                            startActivity(eventDetailsIntent);
-                        }
+                    binding.fragLearnMoreButton.setOnClickListener(v -> {
+                        Intent eventDetailsIntent = new Intent(Intent.ACTION_VIEW);
+                        eventDetailsIntent.setData(Uri.parse(getString(R.string.comiccon_sanDiego_url)));
+                        startActivity(eventDetailsIntent);
                     });
                     break;
                 case "ny":
@@ -103,13 +100,10 @@ public class EventFragment extends Fragment {
                             });
                     binding.fragEventDate.setText(this.getString(R.string.ny_event_date));
                     binding.fragEventLocationTV.setText(this.getString(R.string.ny_event_location));
-                    binding.fragLearnMoreButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent eventDetailsIntent = new Intent(Intent.ACTION_VIEW);
-                            eventDetailsIntent.setData(Uri.parse(getString(R.string.comicon_ny_url)));
-                            startActivity(eventDetailsIntent);
-                        }
+                    binding.fragLearnMoreButton.setOnClickListener(v -> {
+                        Intent eventDetailsIntent = new Intent(Intent.ACTION_VIEW);
+                        eventDetailsIntent.setData(Uri.parse(getString(R.string.comicon_ny_url)));
+                        startActivity(eventDetailsIntent);
                     });
                     break;
                 default:
